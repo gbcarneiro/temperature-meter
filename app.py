@@ -24,3 +24,11 @@ def add_temperature():
         result = collection.insert_one(data)
         return jsonify({"success": True, "message": "Document inserted successfully", "id": str(result.inserted_id)})
     
+@app.route('/get/temperature', methods=['GET'])
+def get_temperature():
+    recent_document = collection.find_one(sort=[("_id", -1)])
+
+    return jsonify({
+        "temperature": recent_document.get("temperatura"),
+        "timestamp": recent_document.get("timestamp")
+    })
