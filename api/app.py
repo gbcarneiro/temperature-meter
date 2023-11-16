@@ -4,6 +4,8 @@ from pymongo.mongo_client import MongoClient
 
 app = Flask(__name__)
 
+password = "7vQXczaDesdGeJYb"
+
 mongo_uri = f"mongodb+srv://gabrielcarneiro:{password}@cluster0.qfs6xtz.mongodb.net/?retryWrites=true&w=majority"
 client = MongoClient(mongo_uri)
 
@@ -26,9 +28,10 @@ def add_temperature():
     
 @app.route('/get/temperature', methods=['GET'])
 def get_temperature():
-    recent_document = collection.find_one(sort=[("_id", -1)])
+    # recent_document = collection.find_one(sort=[("_id", -1)])
 
-    return jsonify({
-        "temperature": recent_document.get("temperatura"),
-        "timestamp": recent_document.get("timestamp")
-    })
+    # return jsonify({
+    #     "temperature": recent_document.get("temperatura"),
+    #     "timestamp": recent_document.get("timestamp")
+    # })
+    return "oi"
